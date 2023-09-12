@@ -2,11 +2,12 @@ import 'program.dart';
 import 'stack.dart';
 
 class VM {
-  VM({this.vmStackCapacity = 1024}) : _stackCapacity = vmStackCapacity;
-  final int _stackCapacity;
   final int vmStackCapacity;
+  late final Stack stack;
 
-  late Stack stack = Stack(stackCapacity: _stackCapacity);
+  VM({this.vmStackCapacity = 1024}){
+    stack = Stack(stackCapacity: vmStackCapacity);
+  }
 
   void runProgram(Program program) {
     for (final instruction in program.instructions) {
